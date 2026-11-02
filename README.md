@@ -180,7 +180,7 @@ The build output is static, so the server only needs nginx.
 
 ```bash
 npm run build
-rsync -avz --delete --chmod=D755,F644 dist/ ubuntu@54.37.157.147:/var/www/ayvi-aero/dist/
+rsync -avz --delete --chmod=D755,F644 dist/ ubuntu@54.37.157.147:/var/www/portfolio/dist/
 ```
 
 `--chmod` makes every uploaded file readable by nginx (which runs as
@@ -188,12 +188,12 @@ rsync -avz --delete --chmod=D755,F644 dist/ ubuntu@54.37.157.147:/var/www/ayvi-a
 file that is private on the local machine is uploaded private too, and
 nginx answers 403 for it.
 
-The nginx config lives in `deploy/nginx-ayvi-aero.conf`. To change it, edit
+The nginx config lives in `deploy/nginx-portfolio.conf`. To change it, edit
 that file, then:
 
 ```bash
-scp deploy/nginx-ayvi-aero.conf ubuntu@54.37.157.147:~/
+scp deploy/nginx-portfolio.conf ubuntu@54.37.157.147:~/
 ssh ubuntu@54.37.157.147
-sudo cp ~/nginx-ayvi-aero.conf /etc/nginx/sites-available/ayvi-aero
+sudo cp ~/nginx-portfolio.conf /etc/nginx/sites-available/portfolio
 sudo nginx -t && sudo systemctl reload nginx
 ```
